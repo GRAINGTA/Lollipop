@@ -15,10 +15,6 @@ import java.awt.Color;
  * @version 16/04/20
  */
 public class Lollipop{
-    public static final double X = 300.0;       // horizontal center of lollipop
-    public static final double Y = 180.0;       // vertical center of lollipop
-    public static final double SIZE = 80.0;     // diameter of lollipop
-    public static final double STICK = 200.0;   // length of lollipop stick
     
     /**
      * Constructor for objects of class Lollipop 
@@ -28,22 +24,31 @@ public class Lollipop{
     UI.addButton("Quit", UI::quit);    // Comment out to checkstyle
     }
     
+    /** Draw 3 lollipops, asking the user for their size */
+    public void doDrawLollipop() {
+        double diam = UI.askDouble("Diameter: ");
+        drawLollipop(300,180,diam,200);
+        drawLollipop(50,60,diam/2.0,90);
+        drawLollipop(400,100,diam,70);
+    }
+    
     /** Draw a red lollipop on a stick*/
-    private void drawLollipop() {
-        double left = X-SIZE/2.0;                       // left of lollipop
-        double top = Y-SIZE/2.0;                        // top of lollipop
-        double bottom = Y+STICK;                        // bottom of stick
+    private void drawLollipop(double x, double y, double size, double stick) {
+        double left = x-size/2.0;           // left of lollipop
+        double top = y-size/2.0;            // top of lollipop
+        double bottom = y+stick;            // bottom of stick
         
-        UI.setLineWidth(SIZE/8.0);                      // set line width
-        UI.drawLine(X,Y,X,bottom);                     // draw line
-        UI.setLineWidth(1);                             // set line width
-        UI.setColor(Color.red);                         // set color to red
-        UI.fillOval(left,top,SIZE,SIZE);   // fill oval
+        UI.setColor(Color.black);           // set color to black
+        UI.setLineWidth(size/8.0);          // set line width
+        UI.drawLine(x,y,x,bottom);          // draw line
+        UI.setLineWidth(1);                 // set line width
+        UI.setColor(Color.red);             // set color to red
+        UI.fillOval(left,top,size,size);    // fill oval
     }
 
     public static void main(String[] args){
         Lollipop obj = new Lollipop();
-        obj.drawLollipop();
+        obj.doDrawLollipop();
     }
 
 }
