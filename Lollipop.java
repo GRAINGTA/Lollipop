@@ -30,7 +30,7 @@ public class Lollipop{
         UI.drawLine(300,200,300,400);       // draw line    (300,200) to (300,400)
         UI.setLineWidth(1);                 // set line width to 1
         UI.setColor(Color.red);             // set color to red
-        UI.fillOval(260,160,80,80);// fill oval    @(260,160), 80x80
+        UI.fillOval(260,160,80,80);         // fill oval    @(260,160), 80x80
     }
 
     public static void main(String[] args){
